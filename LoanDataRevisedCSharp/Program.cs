@@ -1,4 +1,6 @@
-﻿namespace LoanDataRevisedCSharp
+﻿using System;
+
+namespace LoanDataRevisedCSharp
 {
     class LoanData
     {
@@ -8,7 +10,7 @@
         {
             this.i = interestRate / 1200;
             this.n = years * 12;
-            //this.A; Gotta figure out how to create powers
+            this.A = loanAmount * ((i * Math.Pow(1 + i, n)) - 1);
             this.Bal = loanAmount;
         }
 
