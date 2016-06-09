@@ -56,6 +56,23 @@ namespace LoanDataRevisedCSharp
                 beginningBalance = endingBalance;
             }
         }
+
+        public void PrintPayOffTimeReport(double loanAmount, double interestRate)
+        {
+            String title = String.Format("{0, 4} {1, 17}\n",
+                                         "Year",
+                                         "Amount");
+
+            Console.Write("\n" + title);
+
+            for (int n = 1; n <= 50; n++)
+            {
+                A = loanAmount * ((i * Math.Pow(1 + i, n)) / (Math.Pow(1 + i, n) - 1));
+                Console.Write(String.Format("{0, 4} {1, 17:C2}\n",
+                                            n,
+                                            A));
+            }
+        }
     }
 
     class Program
@@ -75,6 +92,7 @@ namespace LoanDataRevisedCSharp
             loanData = new LoanData(loanAmount, years, interestRate);
             loanData.MakePayment(650.00);
             loanData.PrintAmortizationSchedule();
+            loanData.PrintPayOffTimeReport(loanAmount, interestRate);
         }
     }
 }
